@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Lot Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Parking Lot Monitoring</h1>
+        <div class="video-container">
+            <img id="video" src="{{ url_for('video_feed') }}" alt="Video Feed">
+        </div>
+        <div class="controls">
+            <button id="startBtn" onclick="startVideo()">Start</button>
+            <button id="stopBtn" onclick="stopVideo()" disabled>Stop</button>
+        </div>
+    </div>
+
+    <script>
+        let videoElement = document.getElementById('video');
+        let startBtn = document.getElementById('startBtn');
+        let stopBtn = document.getElementById('stopBtn');
+
+        function startVideo() {
+            videoElement.style.display = 'block';
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+        }
+
+        function stopVideo() {
+            videoElement.style.display = 'none';
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        }
+    </script>
+</body>
+</html>
